@@ -31,10 +31,10 @@ function updatePageContent() {
  */
 function updateNotesList() {
   let noteList = document.getElementById("notelist");
-  let newNote = document.createElement("li");
   noteList.innerHTML = "";
 
-  for (let i = 0; i < notes.length; i++) {
+  for (i = 0; i < notes.length; i++) {
+    let newNote = document.createElement("li");
     newNote.textContent = notes[i];
     noteList.appendChild(newNote);
   }
@@ -46,10 +46,9 @@ function updateNotesList() {
  */
 function updateOptionsList() {
   let optionList = document.getElementById("noteselection");
-  let newOption = document.createElement("option");
   optionList.innerHTML = "";
-
-  for (let i = 0; i < notes.length; i++) {
+  for (i = 0; i < notes.length; i++) {
+    let newOption = document.createElement("option");
     newOption.textContent = notes[i];
     optionList.appendChild(newOption);
   }
@@ -71,7 +70,11 @@ function addNote() {
  */
 function removeNote() {
   let removeOption = document.getElementById("noteselection").value;
-  notes.splice(removeOption, 1);
-  document.getElementById("noteselection").value = "";
+
+  for (i = 0; i < notes.length; i++) {
+    if (removeOption == notes[i]) {
+      notes.splice(i, 1);
+    }
+  }
   updatePageContent();
 }

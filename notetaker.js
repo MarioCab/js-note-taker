@@ -17,28 +17,18 @@ document.getElementById("delete").addEventListener("click", removeNote);
  * Function which sets up the logic to update the page based on the current notes
  */
 function updatePageContent() {
-  let optionList = document.getElementById("noteselection");
-
-  let newOption = document.createElement("option");
-
   if (notes.length == 0) {
     document.getElementById("display-notes").classList.add("display-none");
     document.getElementById("delete-note").classList.add("display-none");
   } else {
-    document.getElementById("delete-note").classList.remove("display-none");
-
-    for (let i = 0; i < notes.length; i++) {
-      noteList.innerHTML = "";
-      newNote.textContent = notes[i];
-      noteList.appendChild(newNote);
-
-      optionList.innerHTML = "";
-      newOption.textContent = notes[i];
-      optionList.appendChild(newOption);
-    }
+    updateNotesList();
+    updateOptionsList();
   }
 }
 
+/**
+ * Generates notes in the notelist element based on the value of the notes array
+ */
 function updateNotesList() {
   let noteList = document.getElementById("notelist");
   let newNote = document.createElement("li");
@@ -48,8 +38,22 @@ function updateNotesList() {
     newNote.textContent = notes[i];
     noteList.appendChild(newNote);
   }
-
   document.getElementById("display-notes").classList.remove("display-none");
+}
+
+/**
+ * Updates options for delete list
+ */
+function updateOptionsList() {
+  let optionList = document.getElementById("noteselection");
+  let newOption = document.createElement("option");
+  optionList.innerHTML = "";
+
+  for (let i = 0; i < notes.length; i++) {
+    newOption.textContent = notes[i];
+    optionList.appendChild(newOption);
+  }
+  document.getElementById("delete-note").classList.remove("display-none");
 }
 
 /**

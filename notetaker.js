@@ -11,8 +11,7 @@ let notes = [];
 updatePageContent();
 
 document.getElementById("add").addEventListener("click", addNote);
-document.getElementById('remove').addEventListener('click', removeOperand);
-
+document.getElementById("remove").addEventListener("click", removeOperand);
 
 /**
  * Function which sets up the logic to update the page based on the current notes

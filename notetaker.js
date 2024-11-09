@@ -60,9 +60,15 @@ function updateOptionsList() {
  */
 function addNote() {
   let newInput = document.getElementById("newnote").value;
-  notes.push(newInput);
-  document.getElementById("newnote").value = "";
-  updatePageContent();
+
+  if (newInput != "") {
+    notes.push(newInput);
+    document.getElementById("newnote").value = "";
+    document.getElementById("invalid-note").classList.add("display-none");
+    updatePageContent();
+  } else {
+    document.getElementById("invalid-note").classList.remove("display-none");
+  }
 }
 
 /**
